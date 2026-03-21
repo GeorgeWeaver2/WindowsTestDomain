@@ -1,6 +1,6 @@
 thisis to document a few atempts in my home lab
 
-Problem #1
+**Problem #1**
 How to alow users to add printers them selfs. Some enviorments will use a print sofware like print logic, which is asoftwar ethat goes on to of hte print sever and allows user sto search for printer.
 
     1) you can do settings > printers> add printers, but this pulls every printer in the network.
@@ -21,5 +21,8 @@ How to alow users to add printers them selfs. Some enviorments will use a print 
         3) 
 
 
-Prolbem 2)
-2) how to ensure that all devices have the same applications
+Problem 2
+Allow users to install approved programs by themselves
+
+1) confirm that your ITSM is registered a san app ( in this case I'm using power AUtomate)
+2) 
