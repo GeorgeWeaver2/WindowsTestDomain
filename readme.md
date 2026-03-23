@@ -1,7 +1,6 @@
-thisis to document a few atempts in my home lab
 
 **Problem #1**
-How to alow users to add printers them selfs. Some enviorments will use a print sofware like print logic, which is asoftwar ethat goes on to of hte print sever and allows user sto search for printer.
+How to alow users to add printers them selfs. Some enviornments will use a print sofware like print logic, which is asoftwar ethat goes on to of hte print sever and allows user sto search for printer.
 
     options: for adding printer
     1) you can do settings > printers> add printers, but this pulls every printer in the network.
