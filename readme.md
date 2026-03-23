@@ -10,6 +10,7 @@ How to alow users to add printers them selfs. Some enviornments will use a print
 
     steps:
         1) install the Universla Print connector on the print server
+        <img src="image.png" width="400">
         ![alt text](image.png)
         2) register printers
         ![alt text](image-1.png)
