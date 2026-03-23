@@ -4,8 +4,11 @@
  ITs manually creating software to avoid the print 
 #>
 
+#variable to pull from printer list
 $Printerlist1 = "PrinterList1.txt"
 $Printerlist2 = "PrinterList2.txt"
+
+
 $PrintServer1= "\\PrintServer1"
 $PrintServer2= "\\PrintServer2"
 
@@ -24,26 +27,18 @@ foreach ($Printer in Get-Content $PrinterList1)
     $FileName = "$printername.ps1"
 
     #adds printerpath to the script
-    $Textforscript = @"
-            Add-Printer -ConnectionName $PrinterPath
-            "@
-
-   $PS01Counter++
+    $Textforscript = @" Add-PrinterConnection -Name "$PrinterName" -PrinterPath "$PrinterPath" "@
 }
 
-# for each loop that create a install script for each printer in pritner 12
-foreach ($Printer in Get-Content $PrinterList1) 
+# for each loop that create a install script for each printer in pritner 2
+foreach ($Printer in Get-Content $Printerlist2) 
 {
-
  #gets printer path
-    $PrinterPath = "\\Ps02\$PrinterName"
+    $PrinterPath = "$PrintServer2\$PrinterName"
 
-    #scriot for each pritner
+    #creating the install Script  for each printer
+    $FileName = "$printername.ps1"
 
-
-    #adds printerpatht to scrip
-    $Textforscript = @"
- Add-Printer -ConnectionName $PrinterPath
-"@
-
-$PS01Counter++
+    #adds printerpath to the script
+    $Textforscript = @" Add-PrinterConnection -Name "$PrinterName" -PrinterPath "$PrinterPath" "@
+}
