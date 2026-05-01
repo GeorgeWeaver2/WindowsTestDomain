@@ -4,6 +4,10 @@
  ITs manually creating software to avoid the print 
 #>
 
+#get a list of all the printers on the print server and outputs to a text file 
+Get-Printer -ComputerName "PRINTSERVER01" | Select-Object -ExpandProperty Name > PrinterList1.txt
+Get-Printer -ComputerName "PRINTSERVER02" | Select-Object -ExpandProperty Name > PrinterList1.txt
+
 #variable to pull from printer list
 $Printerlist1 = "PrinterList1.txt"
 $Printerlist2 = "PrinterList2.txt"
