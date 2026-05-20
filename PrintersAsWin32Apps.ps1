@@ -1,0 +1,48 @@
+ <#This script gets the path for all printer objects on the print server, creeates a 1 line install (same as the location), 
+ and changes them to a windows 32app so that each pritner can be installed as its own "win32" software app. 
+
+ ITs manually creating software to avoid the print 
+#>
+
+#get a list of all the printers on the print server and outputs to a text file 
+Get-Printer -ComputerName "PRINTSERVER01" | Select-Object -ExpandProperty Name > PrinterList1.txt
+Get-Printer -ComputerName "PRINTSERVER02" | Select-Object -ExpandProperty Name > PrinterList1.txt
+
+#variable to pull from printer list
+$Printerlist1 = "PrinterList1.txt"
+$Printerlist2 = "PrinterList2.txt"
+
+
+$PrintServer1= "\\PrintServer1"
+$PrintServer2= "\\PrintServer2"
+
+#creaets outpit file
+$OutputFolder = "PrinterScripts"
+
+
+# for each loop that create a install script for each printer
+foreach ($Printer in Get-Content $PrinterList1) 
+{
+
+ #gets printer path
+    $PrinterPath = "$PrintServer1\$PrinterName"
+
+    #creating the install Script  for each printer
+    $FileName = "$printername.ps1"
+
+    #adds printerpath to the script
+    $Textforscript = @" Add-PrinterConnection -Name "$PrinterName" -PrinterPath "$PrinterPath" "@
+}
+
+# for each loop that create a install script for each printer in pritner 2
+foreach ($Printer in Get-Content $Printerlist2) 
+{
+ #gets printer path
+    $PrinterPath = "$PrintServer2\$PrinterName"
+
+    #creating the install Script  for each printer
+    $FileName = "$printername.ps1"
+
+    #adds printerpath to the script
+    $Textforscript = @" Add-PrinterConnection -Name "$PrinterName" -PrinterPath "$PrinterPath" "@
+}
