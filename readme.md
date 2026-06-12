@@ -1,26 +1,36 @@
 
-**Problem #1**
-How to allow users to add printers them selfs. Some enviornments will use a print sofware like print logic, which is asoftwar ethat goes on to of hte print sever and allows user sto search for printer.
+**Problem #1: How to allow users that travel to install network printers by them selves **  
 
-options for adding Printer
-1) you can do settings > printers> add printers. However this pulls every printer in the network.
-2) you can do \\prtsvr\Printer. This works but some users will not understand how to serach for  their printer
-3) you can use a Group policy object to auto maticaly install printers by location.
+Current Options:
+1) Opening setting and selecting printers:
+This will pull every printer on the nework
+   <img width="490" height="333" alt="image" src="https://github.com/user-attachments/assets/7b9052ea-f79d-4818-b27d-86e326492694" />
 
-#add gpo here
 
-4) push printing up to windows universal print server. This moves the printing to the MS cloud, but has 2 requirements. First it requires a e3,e5 or standalone license., and it limits your printing to 100 print jobs a month
+   
+ 2) Open  the network path \\prtsvr\Printer and select the printer
+ users often dont know the name of the printer
 
-steps:
-    1) install the Universla Print connector on the print server
+ 3) Use a GPO to automaticaly install printers by location
+   Requires AD sites to be setup with
+
+   [needs image]
+   
+   **Add Printers to Windows universal print server**
+   This moves the printing to the MS cloud, but has 2 requirements. First it requires a e3,e5 or standalone license., and it limits your printing to 100 print jobs a month
+
+    Steps:
+   a) install the Universla Print connector on the print server
         ![alt text](image-5.png)
-    2) register printers
+    b)  register printers
     ![alt text](image-1.png)
 
-    3) 
-4) run script about 3 minutes after nstall, which gets the computer IP address and instale
+4) Create and deploy 2 scripts that will a) monitor the print server(s) for any updates and update a .csv file with those changes and b) Add a desktop shortcut in a folder for each printer in the building.
+    ServerUpdate.ps1 : checks the printer for all of its printers and get the name, location, and creates a UNC path
+    DesktopPrinterScript.ps1 : get the computers IP address, checkls it  again the network page to determine the subnet its on, and checks that location against
+    locations in _ServerUpdate.ps1_ for any matches. Desktop shortcuts are created for each match.
+      
+5) Deploy the Printers to the Intune company Portal as Win 32 apops
+6) Create a ms logic app that get sa list of the aiavlbe printer and alows hte user to choose thiers
 
-5) create a ms logic app that get sa list of the aiavlbe printer and alows hte user to choose thiers
-
-6) Add each printer network location as a win32 app that can be installed by the
 
