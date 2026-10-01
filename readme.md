@@ -1,4 +1,4 @@
-This documents my Windows Test Domain where I explore Active Directory roles and groups, DHCP scopes and reservations, and DNS 
+ Windows Test Domain where I explore Active Directory roles and groups, DHCP scopes and reservations, and DNS 
 
 <strong> Active Directory  and user accounts</strong>
 
